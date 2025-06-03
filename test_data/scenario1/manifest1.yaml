@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-config
+data:
+  key1: value1
+  key2: value2
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.21
+      env:
+        - name: CONFIG_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: example-config
+              key: key1

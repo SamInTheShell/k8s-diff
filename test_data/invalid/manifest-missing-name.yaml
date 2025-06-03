@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  # Missing required name field
+  namespace: default
+data:
+  app.properties: |
+    key1=value1
+    key2=value2

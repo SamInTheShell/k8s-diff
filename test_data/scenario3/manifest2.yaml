@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: evolving-pod
+  labels:
+    app: web-service
+spec:
+  containers:
+    - name: web-server
+      image: nginx:1.21
+      ports:
+        - containerPort: 80
+      env:
+        - name: ENV
+          value: "production"
+    - name: sidecar-proxy
+      image: envoyproxy/envoy:v1.24
+      ports:
+        - containerPort: 8080
+      env:
+        - name: PROXY_MODE
+          value: "sidecar"
+  restartPolicy: Always

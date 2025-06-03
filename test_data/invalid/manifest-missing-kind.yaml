@@ -1,0 +1,8 @@
+apiVersion: v1
+# Missing kind field
+metadata:
+  name: my-config
+data:
+  app.properties: |
+    key1=value1
+    key2=value2
